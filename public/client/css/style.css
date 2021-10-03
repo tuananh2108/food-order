@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap');
+
+:root {
+    --root-color: #fb6e14;
+    --header-color: #130d08;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Merriweather';
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    font-weight: 300;
+    line-height: 2;
+    color: #5e493a;
+    background-image: url(../img/background_food.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a:not([href]) {
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", serif;
+    color: #000;
+}
+
+.heading {
+    position: relative;
+    padding-top: 30px !important;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    font-size: 50px;
+    font-style: italic;
+}
+
+h2.heading:before {
+    content: "";
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: 0;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -32px;
+}
+
+h2.heading:after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -20px;
+    background: #fb6e14;
+}
+
+.btn-custom {
+    color: #fff;
+    background: var(--root-color);
+}
+
+.btn-custom:hover {
+    color: #fff;
+    background: #ff7c2b;
+}
+
+header {
+    height: 70px;
+}
+
+header a.nav-link {
+    color: var(--header-color);
+}
+
+header a.nav-link:not(.logo):hover {
+    color: var(--root-color);
+}
+
+header a.nav-link:not(.logo):active {
+    color: var(--root-color);
+}
+
+header a.nav-link:not(.logo):focus {
+    color: var(--root-color);
+}
+
+aside.sidebar {
+    position: fixed;
+    top: 80px;
+}
+
+aside.sidebar ul {
+    width: 205px;
+}
+
+aside.sidebar ul li {
+    position: relative;
+}
+
+aside.sidebar ul li:hover::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    opacity: 0.2;
+    position: absolute;
+}
+
+.fs-c18 {
+    font-size: 18px;
+}
+
+/* CSS for Content */
+.content {
+    min-height: 90vh;
+    background-color: #fff;
+}
+
+/* CSS for Header */
+.logo {
+    font-size: 40px;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+/* End CSS for Header */
+
+section#banner {
+    background-image: url(../img/banner_food.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Start CSS for Features */
+#feature {
+    background-image: url(../img/wood_1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.feature-header {
+    padding: 50px 0 20px;
+}
+
+.feature-header > h2.heading {
+    color: #fff;
+}
+
+.feature-header > h2.heading:before {
+    background: url(../icon/feature-icon.png) no-repeat;
+}
+
+.feature-header p {
+    color: #a99c92;
+}
+
+.feature-row {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+
+.feature-card-img > img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.feature-card-content {
+    position: relative;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.feature-card-content::before {
+    content: "";
+    position: absolute;
+    z-index: 999;
+    top: 50px;
+    left: 0;
+    margin-left: -15px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #f5f5f5;
+}
+
+.feature-card-reversed > .feature-card-content::before {
+    left: 100%;
+    right: 0;
+    margin-right: -15px;
+    margin-left: 0px;
+    border-left: 15px solid #f5f5f5;
+    border-right: none;
+}
+
+.feature-card-1 .feature-card-content {
+    background-color: #faebcd;
+}
+
+.feature-card-1 .feature-card-content::before {
+    border-right: 15px solid #faebcd;
+}
+
+.feature-card-1 > .feature-card-row {
+    height: 100%;
+}
+
+.feature-card-1 .feature-card-reversed > .feature-card-content {
+    background-color: #faebcd;
+}
+
+.feature-card-1 .feature-card-reversed > .feature-card-content::before {
+    border-left: 15px solid #faebcd;
+    border-right: none;
+}
+
+.feature-card-reversed .feature-card-img {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+}
+
+.feature-card-reversed .feature-card-content {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+}
+
+.feature-card-content h2 {
+    margin: 20px 0 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.feature-card-content span.pricing {
+    font-size: 40px;
+    display: block;
+    padding-top: 20px;
+}
+
+.feature-card-content span.pricing::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    left: 50%;
+    margin-left: -20px;
+    background: #fb6e14;
+}
+
+.feature-card-content p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #222;
+    margin-bottom: 30px;
+}
+/* End CSS for Features */
+
+/* Start CSS for Product */
+.product-header {
+    padding: 50px 0 10px;
+}
+
+.product-header > h2.heading:before {
+    background: url(../icon/product-icon.png) no-repeat;
+}
+
+.regions {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.product-menu {
+    float: left;
+    width: 100%;
+}
+
+.product-menu > a {
+    display: block;
+    width: 100%;
+    padding: 0 0 20px 0;
+    margin: 0 0 20px 0;
+    float: left;
+    border-bottom: 1px dotted #ccc;
+    cursor: pointer;
+}
+
+.product-desc {
+    clear: both;
+    float: left;
+    width: 80%;
+}
+
+.product-desc > figure {
+    position: relative;
+    float: left;
+    width: 20%;
+    margin-right: 4%;
+    margin-bottom: 0;
+}
+
+.product-desc > figure img {
+    max-width: 100%;
+    margin-bottom: 0;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+}
+
+.product-desc > div {
+    position: relative;
+    float: left;
+    width: 75%;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.product-desc > div h3 {
+    padding: 0;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.product-desc > div p {
+    margin: 0;
+}
+
+.product-pricing {
+    float: right;
+    width: 20%;
+    text-align: right;
+    font-size: 20px;
+    color: var(--root-color);
+}
+
+.btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.btn-view-all:hover {
+    color: var(--root-color);
+}
+
+.btn-view-all > i {
+    padding-left: 2px;
+    font-size: 26px;
+}
+
+/* End CSS for Product */
+
+/* Start CSS for Modal */
+.modal-header {
+    padding-top: 10px;
+    padding-bottom: 0;
+    border-bottom: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-title {
+    font-size: 18px;
+}
+
+.food-item {
+    position: relative;
+    display: flex;
+    padding: 16px;
+    box-shadow: 0 2px 4px #00000012;
+}
+
+.food-img {
+    position: relative;
+    overflow: visible;
+    flex-basis: 120px;
+    align-self: flex-start;
+    width: 120px;
+    margin: 0 auto;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    cursor: pointer;
+}
+
+.food-img > img {
+    width: 100%;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    transition: all .15s linear;
+}
+
+.food-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+}
+
+.food-content:not(:first-child) {
+    padding-left: 8px;
+}
+
+.food-name {
+    display: block;
+    display: -webkit-box;
+    padding-right: 110px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.food-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.number-input-up-down {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    height: 30px;
+    display: inline-flex;
+}
+
+.number-input-up-down > input[type="number"] {
+    position: relative;
+    right: -6px;
+    width: 32px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    border-style: none;
+    background: rgba(0,0,0,0);
+}
+
+.number-input-up-down > input[type="number"]:focus {
+    outline: none;
+}
+
+.number-input-up-down > a {
+    cursor: pointer;
+    width: 32px;
+    padding: 4px 0;
+    margin: 0 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.number-input-up-down > a.disabled {
+    border: 1px solid #ebebeb;
+    color: #9c9c9c!important;
+    cursor: not-allowed;
+}
+
+.food-custom {
+    flex: 1;
+    max-height: calc(80vh - 256px);
+    overflow: hidden auto;
+}
+
+.flex-view {
+    margin: 0 16px;
+    background: #fff;
+}
+
+.flex-view .title {
+    padding: 16px 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.food-note {
+    flex: 1;
+    width: 100%;
+}
+
+.input-auto-grow {
+    background: none;
+    border-bottom: 1px solid #ebebeb;
+    border-radius: 0;
+    border-style: none;
+    line-height: 24px;
+    padding: 0;
+    resize: none;
+}
+/* End CSS for Modal*/
+
+.cart {
+    position: relative;
+}
+
+.cart-qty {
+    position: absolute;
+    top: 5.5px;
+    right: 3.5px;
+    width: 20px;
+    height: 14px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    line-height: 14px;
+    color: red;
+}
