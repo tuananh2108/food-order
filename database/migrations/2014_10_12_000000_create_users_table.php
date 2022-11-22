@@ -22,10 +22,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('contact');
-            $table->string('address');
-            // $table->integer('role_id')->unsigned();
-            // $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->string('address')->nullable();
             $table->rememberToken();
+            $table->enum('status', ['active', 'end'])->default('active');
             $table->timestamps();
         });
     }

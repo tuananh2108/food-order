@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>A place to eat and drink</title>
 
@@ -29,12 +30,22 @@
             <div class="content">
                 <header class="sticky-top bg-white">
                     <nav class="h-100 border-bottom">
-                        <ul class="nav justify-content-center align-content-center align-items-center h-100">
+                        <div class="navbar justify-content-center align-content-center align-items-center">
+                            <div class="container-fluid">
+                                <div class="logo">
+                                    <a class="nav-link logo fs-c18" href="#">LOGO</a>
+                                </div>
+                                <button type="button" id="navbar-toggler" class="btn">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="nav align-content-center align-items-center">
                             <li class="nav-item">
                               <a class="nav-link fs-c18 active" href="{{asset('/')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link fs-c18" href="#">About</a>
+                                <a class="nav-link fs-c18" href="#about">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link fs-c18" href="#feature">Features</a>
@@ -48,12 +59,12 @@
                             <li class="nav-item">
                                 <a class="nav-link fs-c18 cart" href="./cart-detail.html">
                                     <i class="fas fa-shopping-cart"></i>
-                                    <span class="cart-qty">4</span>
+                                    <span class="cart-qty"></span>
                                 </a>
                             </li>
                             @if(!\Illuminate\Support\Facades\Auth::check())
                                 <li class="nav-item">
-                                    <a class="nav-link fs-c18" href="{{asset('logout')}}">Login</a>
+                                    <a href="#" id="btn-login-register" class="nav-link fs-c18" role="login" data-bs-toggle="modal" data-bs-target="#exampleModal1">Login / Register</a>
                                 </li>
                             @else
                                 <li class="nav-item dropdown">
@@ -73,7 +84,7 @@
                 </header>
 
                 <div>
-                    @yield('content') 
+                    @yield('content')
                 </div>
 
             </div>
@@ -84,11 +95,21 @@
     </div>
 
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Setup csrf token -->
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 
     <!-- Custom -->
     <script src="{{asset('client/js/index.js')}}"></script>
-    
+    <script src="{{asset('client/js/login.js')}}"></script>
+
     <!-- Bootstrap -->
     <script src="{{asset('client/fonts/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </body>

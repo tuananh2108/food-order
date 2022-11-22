@@ -18,9 +18,9 @@ body {
     font-weight: 300;
     line-height: 2;
     color: #5e493a;
-    background-image: url(../img/background_food.jpg);
+    /* background-image: url(../img/background_food.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 a:not([href]) {
@@ -32,9 +32,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
 }
 
+hr {
+    margin: 0.6rem 0;
+}
+
 .heading {
     position: relative;
-    padding-top: 30px !important;
+    padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
     font-size: 50px;
@@ -73,6 +77,21 @@ h2.heading:after {
     background: #ff7c2b;
 }
 
+.btn-back {
+    color: #000;
+    background-color: #f0f0f0;
+}
+
+.btn-back:hover {
+    color: #000;
+    background-color: #e6e6e6;
+}
+
+.alert-message {
+    
+}
+
+/* Start CSS for Header */
 header {
     height: 70px;
 }
@@ -92,6 +111,30 @@ header a.nav-link:not(.logo):active {
 header a.nav-link:not(.logo):focus {
     color: var(--root-color);
 }
+
+header a.active {
+    color: var(--root-color);
+}
+
+.navbar {
+    display: none;
+    height: 100%;
+}
+
+.nav {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+button#navbar-toggler {
+    font-size: 1.6rem;
+}
+
+.dropdown-menu {
+    transform: translate3d(-76px, 62px, 0px) !important;
+}
+/* End CSS for Header */
 
 aside.sidebar {
     position: fixed;
@@ -136,10 +179,55 @@ aside.sidebar ul li:hover::before {
 }
 /* End CSS for Header */
 
+/* Start CSS for Login/Register */
+#exampleModal1 .modal-content {
+    border-radius: 0;
+    font-family: 'Merriweather';
+}
+
+.modal-register {
+    display: none;
+}
+
+.header-login-register {
+    padding: 0 30px;
+    margin: 10px 0;
+}
+
+.header-login-register > h5 {
+    color: var(--root-color);
+    cursor: pointer;
+}
+
+.form-login-register {
+    padding: 10px 20px 35px;
+}
+
+.form-login-register > input {
+    margin-bottom: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 0;
+}
+
+.form-login-register > .group-btn {
+    margin: 40px 0 30px;
+    float: right;
+}
+
+.form-login-register > div button {
+    margin-left: 10px;
+    padding: 6px 20px;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+/* End CSS for Login/Register */
+
 section#banner {
-    background-image: url(../img/banner_food.jpg);
+    /* background-image: url(../img/banner_food.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 /* Start CSS for Features */
@@ -382,7 +470,44 @@ section#banner {
 
 /* End CSS for Product */
 
-/* Start CSS for Modal */
+/* Start CSS for About */
+#about {
+    margin-top: 30px;
+}
+
+#about-content > div {
+    padding: 2em 4em;
+    text-align: left;
+    background: #130d08 url(../img/wood_1.png) repeat;
+}
+
+#about-content > div h2 {
+    font-size: 30px;
+}
+
+#about-content > div p {
+    line-height: 2;
+    color: #a99c92;
+    margin-bottom: 30px;
+}
+
+#about-content > div p span.firstcharacter {
+    float: left;
+    color: #903;
+    font-size: 75px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 10px;
+    padding-left: 3px;
+    font-style: italic;
+    top: -20px;
+    position: relative;
+    color: #fff;
+    font-family: "Playfair Display", serif;
+}
+/* End CSS for About */
+
+/* Start CSS for Food Modal */
 .modal-header {
     padding-top: 10px;
     padding-bottom: 0;
@@ -539,7 +664,7 @@ section#banner {
     padding: 0;
     resize: none;
 }
-/* End CSS for Modal*/
+/* End CSS for Food Modal*/
 
 .cart {
     position: relative;
@@ -547,13 +672,259 @@ section#banner {
 
 .cart-qty {
     position: absolute;
-    top: 5.5px;
-    right: 3.5px;
-    width: 20px;
-    height: 14px;
+    top: 10px;
+    right: 9px;
+    width: 7.5px;
+    height: 7.5px;
     text-align: center;
     font-size: 0.7rem;
     font-weight: bold;
     line-height: 14px;
-    color: red;
+    background-color: red;
+    border-radius: 50%;
+}
+
+/* CSS for Detail Cart Page */
+.cart-group > .card {
+    margin-bottom: 15px;
+}
+
+.card {
+    background: #fff;
+    padding: 1.07142857rem;
+    box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+    border-radius: 8px;
+    border: none;
+}
+
+.card-footer {
+    background: #fff;
+    border-top: none;
+    /* border-top: 1px solid #ebebeb; */
+    padding: 0 20px;
+}
+
+.cart-item-delete {
+    position: relative;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #000;
+}
+
+.cart-item-delete:hover {
+    color: #000;
+    border-bottom: none;
+}
+
+.cart-item-qty {
+    position: inherit;
+}
+
+.cart-item-qty > a {
+    border: 1px solid rgb(66, 66, 66);
+}
+
+.cart-item-price {
+    margin-left: 8px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.text-overflow {
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* End CSS for Detail Cart Page */
+
+/* Start CSS for Checkout Page */
+.form-group {
+    padding: 18px;
+    margin-bottom: 15px;
+    background-color: #f8f7f5;
+}
+
+.form-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.input-group {
+    position: relative;
+    margin: 20px 0 40px;
+}
+
+.input-group > input {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #908f8e;
+    background-color: transparent;
+    z-index: 99;
+}
+
+.input-group > input:focus {
+    border-bottom-width: 2px;
+    border-bottom-color: #e4002b;
+}
+
+.input-group > label {
+    position: absolute;
+    font-size: 1rem;
+    transform-origin: 0 0;
+    transition: transform 400ms cubic-bezier(0.25, 0.8, 0.25, 1),color 400ms cubic-bezier(0.25, 0.8, 0.25, 1),width 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.input-group-focus label {
+    top: -20px;
+    font-size: 0.7rem;
+}
+
+p.item-qty {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.input-payment-method {
+    position: relative;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.payment-method-active {
+    color: #fff;
+    background-color: #000;
+}
+
+.input-payment-method > label {
+    position: relative;
+    width: 100%;
+    font-weight: 500;
+}
+
+.input-payment-method > label::after {
+    position: absolute;
+    content: "";
+    right: 10px;
+    width: 52px;
+    height: 37px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url(../icon/ZaloPay_icon.png) no-repeat;
+    background-position: 50%;
+    background-size: contain;
+}
+
+.input-payment-method > label.pay-cash::after {
+    background: url(../icon/sprite.png) no-repeat -90px -209px;
+}
+
+.payment-method-active > label.pay-cash::after {
+    background: url(../icon/sprite.png) no-repeat -90px -280px;
+}
+
+.input-payment-method > input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 99;
+}
+
+.btn-place-order {
+    padding: 10px 120px;
+    border-radius: 25px;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+.no-writer > input:read-only, .no-writer > input:disabled {
+    color: #a9a9a9;
+    cursor: not-allowed;
+}
+/* End CSS for Checkout Page */
+
+/* Responsive */
+@media (max-width: 576px) {
+    .nav {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Start Responsive Navbar */
+    header {
+        position: relative;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+    .nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 50%;
+        height: max-content;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        display: none;
+        justify-content: flex-start;
+        z-index: 999;
+    }
+
+    .nav > li {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .nav > li:hover {
+        background-color: #333;
+    }
+
+    .nav > li a.logo {
+        display: none;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        transform: translate3d(0px, 54.4px, 0px) !important;
+    }
+
+    #navbar-toggler:active {
+        border: none;
+    }
+
+    .cart-qty {
+        top: 12px;
+        left: 36px;
+    }
+    /* End Responsive Navbar */
+}
+
+@media (min-width: 768px) {
+    .nav {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Start Responsive About */
+    #myMap {
+        height: 340px;
+        order: 2;
+    }
+
+    #about-content {
+        order: 1;
+    }
+    /* End Responsive About */
 }

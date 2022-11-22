@@ -21,14 +21,6 @@ class UserTableSeeder extends Seeder
                 'role_id' => 1
             ],
             [
-                'name' => 'guest',
-                'email' => 'guest@gmail.com',
-                'password' => bcrypt('123456'),
-                'contact' => '0329561925',
-                'address' => 'Hà Nội',
-                'role_id' => 2
-            ],
-            [
                 'name' => 'client',
                 'email' => 'client@gmail.com',
                 'password' => bcrypt('123456'),

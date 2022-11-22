@@ -14,7 +14,7 @@ class order extends Model
         return $this->belongsToMany('App\models\food', 'order_food', 'order_id', 'food_id')->withPivot('quantity');
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsToMany('App\User');
     }

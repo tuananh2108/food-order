@@ -13,18 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group(['namespace'=>'Admin'], function(){
-Route::group(['prefix'=>'login', 'middleware'=>['CheckLogedIn', 'CheckAdmin']], function(){
-    Route::get('/','LoginController@getLogin');
-    Route::post('/','LoginController@postLogin');
+Route::group(['namespace'=>'common'], function(){
+    Route::group(['prefix'=>'login', 'middleware'=>['CheckLogedIn', 'CheckAdmin']], function(){
+        Route::post('/','LoginController@login');
+    });
+    Route::group(['prefix'=>'register'], function(){
+        Route::post('/','RegisterController@register');
+    });
 });
-Route::group(['prefix'=>'register'], function(){
-    Route::get('/','RegisterController@getRegister');
-    Route::post('/','RegisterController@postRegister');
-});
-// });
 
-//backend them middleware auth:user
+//admin
 Route::group(['namespace'=>'admin'], function(){
     Route::get('logout', 'HomeController@getLogout');
 
@@ -94,7 +92,7 @@ Route::group(['namespace'=>'admin'], function(){
     });
 });
 
-//front end
+//client
 Route::group(['namespace'=>'client'], function(){
     Route::get('/', 'IndexController@index');
     Route::post('/load-more', 'LoadMoreController@postLoadMoreFood');

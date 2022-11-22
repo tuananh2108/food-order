@@ -22,7 +22,7 @@ class CheckLogedIn
         if(Auth::check())
         {
             if(Auth::user()->role_id == 1) {
-                return redirect()->intended('admin/home');
+                return redirect()->intended('admin/dashboard');
             }
             return redirect()->intended('/');
         }

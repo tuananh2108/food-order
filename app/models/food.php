@@ -9,7 +9,7 @@ class food extends Model
     protected $table = 'foods';
     protected $guarded = ['id'];
     public $timestamps = false;
-    public function categories()
+    public function category()
     {
         return $this->belongsTo('App\models\category', 'category_id', 'id');
     }

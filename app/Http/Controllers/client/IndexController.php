@@ -11,8 +11,8 @@ class IndexController extends Controller
     public function index()
     {
         $data['carts'] = session()->get('cart');
-        $data['categories'] = category::where([['featured','Yes'],['active','Yes']])->orderBy('id', 'desc')->take(3)->get();
-        $data['foods'] = food::where([['featured','Yes'],['active','Yes']])->take(4)->get();
+        $data['categories'] = category::where([['status', 'active']])->orderBy('id', 'desc')->take(3)->get();
+        $data['foods'] = food::where([['featured', 'Yes'],['status', 'active']])->take(4)->get();
         return view('client.home', $data);
     }
 

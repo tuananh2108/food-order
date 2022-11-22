@@ -18,13 +18,13 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->decimal('total', 18, 0);
             $table->dateTime('order_date', 0);
-            $table->string('status');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('customer_name')->nullable();
             $table->string('customer_email')->nullable();
             $table->string('customer_contact')->nullable();
             $table->string('customer_address')->nullable();
+            $table->enum('status', ['active', 'pending', 'delivering', 'delivered', 'cancel', 'end'])->default('active');
             $table->timestamps();
         });
     }
