@@ -93,7 +93,9 @@ $(document).ready(function(){
             success: function (data) {
                 if(data.code === 200) {
                     window.location.href = data.url;
-                    $(".alert-message").append("<i class='alert-success'>"+ data.message +"</i>");
+                    if(data.message) {
+                        $(".alert-message").append("<i class='alert-success'>"+ data.message +"</i>");
+                    }
                 }
                 else {
                     $(".alert-message").append("<i class='alert-error'>"+ data.message +"</i>");

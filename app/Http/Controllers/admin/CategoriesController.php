@@ -15,63 +15,45 @@ class CategoriesController extends Controller
     {
         $data['qty_order'] = count(order::all());
         $data['categories'] = category::all();
-        return view('admin.category.indexCategory', $data);
+        return view('admin.category.index', $data);
     }
 
     public function getAddCategory()
     {
         $data['qty_order'] = count(order::all());
-        return view('admin.category.addCategory', $data);
+        return view('admin.category.add', $data);
     }
 
     public function postAddCategory(AddCategoryRequest $request)
     {
         $category = new category;
-        $category->title=$request->title;
-        if($request->hasFile('image'))
-        {
-            $file = $request->image;
-            $filename= Str::random(9).'.'.$file->getClientOriginalExtension();
-            $file->move('admin/img/category', $filename);
-            $category->image=$filename;
-        }
-        else
-        {
-            $category->image = 'no-img.jpg';
-        }
-        $category->featured=$request->featured;
-        $category->active=$request->active;
+        $category->title = $request->title;
         $category->save();
-        return redirect()->back()->with('success', 'Thêm thành công!');
+        return redirect()->back()->with('success', 'Successfully added new!');
     }
 
     public function getEditCategory($id)
     {
         $data['qty_order'] = count(order::all());
         $data['category'] = category::find($id);
-        return view('admin.category.editCategory', $data);
+        return view('admin.category.edit', $data);
     }
 
     public function postEditCategory(EditCategoryRequest $request, $id)
     {
         $category = category::find($id);
-        $category->title=$request->title;
-        if($request->hasFile('image'))
-        {
-            $file = $request->image;
-            $filename= Str::random(9).'.'.$file->getClientOriginalExtension();
-            $file->move('admin/img/category', $filename);
-            $category->image=$filename;
-        }
-        $category->featured=$request->featured;
-        $category->active=$request->active;
+        $category->title = $request->title;
+        $category->status = $request->status;
         $category->save();
-        return redirect()->intended('admin/category')->with('success', 'Cập nhật thành công!');
+        if(!$category->save())
+            return redirect()->back()->with('error', 'Category name has been duplicated!');
+        else
+            return redirect()->intended('admin/category')->with('success', 'Update successful!');
     }
 
     public function getDeleteCategory($id)
     {
         category::destroy($id);
-        return back()->with('success', 'Xóa thành công!');
+        return back()->with('success', 'Delete successfully!');
     }
 }

@@ -21,7 +21,7 @@ class CreateFoodsTable extends Migration
             $table->string('image');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('featured', 10);
+            $table->enum('featured', ['yes', 'no'])->default('no');
             $table->enum('region', ['northern', 'central', 'southern']);
             $table->enum('status', ['active', 'end'])->default('active');
             $table->timestamps();

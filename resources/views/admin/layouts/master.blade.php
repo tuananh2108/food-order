@@ -1,186 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Admin Dashboard</title>
+        <!-- Chart -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+        <!-- Datatable -->
+        <link rel="stylesheet" href="{{asset('admin/vendor/datatables/css/jquery.dataTables.css')}}">
+        <!-- Toastr -->
+        <link rel="stylesheet" href="{{asset('admin/vendor/toastr/css/toastr.min.css')}}">
+        <!-- Custom Stylesheet -->
+        <link rel="stylesheet" href="{{asset('admin/css/main.css')}}">
+        <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="{{asset('admin/css/main.css')}}">
-</head>
-
-<body>
-    <div class="layer"></div>
-    <!-- ! Body -->
-    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
-    <div class="page-flex">
-  <!-- ! Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-start">
-        <div class="sidebar-head">
-            <a href="{{asset('admin/dashboard')}}" class="logo-wrapper" title="Home">
-                <span class="sr-only">Home</span>
-                <span class="icon logo" aria-hidden="true"></span>
-                <div class="logo-text">
-                    <span class="logo-title">Logo</span>
-                    <span class="logo-subtitle">Dashboard</span>
-                </div>
-
-            </a>
-            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-                <span class="sr-only">Toggle menu</span>
-                <span class="icon menu-toggle" aria-hidden="true"></span>
-            </button>
-        </div>
-        <div class="sidebar-body">
-            <ul class="sidebar-body-menu">
-                <li>
-                    <a class="active" href="{{asset('admin/dashboard')}}"><span class="icon home" aria-hidden="true"></span>Trang chủ</a>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon category" aria-hidden="true"></span>Quản lý loại đồ ăn
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="{{asset('admin/category')}}">Danh sách loại đồ ăn</a>
-                        </li>
-                        <li>
-                          <a href="{{asset('admin/category/add')}}">Thêm mới</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                  <a class="show-cat-btn" href="##">
-                      <span class="icon folder" aria-hidden="true"></span>Quản lý món ăn
-                      <span class="category__btn transparent-btn" title="Open list">
-                          <span class="sr-only">Open list</span>
-                          <span class="icon arrow-down" aria-hidden="true"></span>
-                      </span>
-                  </a>
-                  <ul class="cat-sub-menu">
-                      <li>
-                          <a href="{{asset('admin/food')}}">Danh sách món ăn</a>
-                      </li>
-                      <li>
-                          <a href="{{asset('admin/food/add')}}">Thêm mới</a>
-                      </li>
-                  </ul>
-              </li>
-                <li>
-                    <a href="{{asset('admin/customer')}}">
-                        <span class="icon user-3" aria-hidden="true"></span>Quản lý khách hàng
-                    </a>
-                </li>
-                <li>
-                    <a class="show-cat-btn" href="##">
-                        <span class="icon user-2" aria-hidden="true"></span>Quản lý nhân viên
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                            <span class="icon arrow-down" aria-hidden="true"></span>
-                        </span>
-                    </a>
-                    <ul class="cat-sub-menu">
-                        <li>
-                            <a href="{{asset('admin/employee')}}">Danh sách nhân viên</a>
-                        </li>
-                        <li>
-                            <a href="{{asset('admin/employee/add')}}">Thêm mới</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{asset('admin/order')}}">
-                        <span class="icon document" aria-hidden="true"></span>Đơn đặt hàng
-                    </a>
-                    <span class="msg-counter">{{$qty_order}}</span>
-                </li>
-            </ul>
-            <span class="system-menu__title">Hệ thống</span>
-            <ul class="sidebar-body-menu">
-                <li>
-                    <a href="{{asset('/')}}"><span class="icon home" aria-hidden="true"></span>Trang bán hàng</a>
-                </li>
-                <li>
-                    <a href="{{asset('admin/user')}}"><span class="icon user-1" aria-hidden="true"></span>Quản lý tài khoản</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</aside>
-  <div class="main-wrapper">
-    <!-- ! Main nav -->
-    <nav class="main-nav--bg">
-  <div class="container main-nav">
-    <div class="main-nav-start">
-    </div>
-    <div class="main-nav-end">
-      <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-        <span class="sr-only">Toggle menu</span>
-        <span class="icon menu-toggle--gray" aria-hidden="true"></span>
-      </button>
-      <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
-        <span class="sr-only">Switch theme</span>
-        <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
-        <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
-      </button>
-      <div class="nav-user-wrapper">
-        <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
-          <span class="sr-only">My profile</span>
-          <span class="nav-user-img">
-            <picture><source srcset="{{asset('admin/img/avatar/avatar-illustrated-02.webp')}}" type="image/webp"><img src="{{asset('admin/img/avatar/avatar-illustrated-02.png')}}" alt="User name"></picture>
-          </span>
-        </button>
-        <ul class="users-item-dropdown nav-user-dropdown dropdown">
-          <li><a href="##">
-              <i data-feather="user" aria-hidden="true"></i>
-              <span>Thông tin đăng nhập</span>
-            </a></li>
-          <li><a href="##">
-              <i data-feather="settings" aria-hidden="true"></i>
-              <span>Cài đặt tài khoản</span>
-            </a></li>
-          <li><a class="danger" href="{{asset('logout')}}">
-              <i data-feather="log-out" aria-hidden="true"></i>
-              <span>Đăng xuất</span>
-            </a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
-    <!-- ! Main -->
-    <main class="main users chart-page" id="skip-target">
-        <div class="container">
-            @yield('content')
-        </div>
-    </main>
-    <!-- ! Footer -->
-    <footer class="footer">
-        <div class="container footer--flex">
-            <div class="footer-start">
-                <p>2022 © Dashboard</p>
+    <body>
+        <!--*******************
+            Preloader start
+        ********************-->
+        <div id="preloader">
+            <div class="sk-three-bounce">
+                <div class="sk-child sk-bounce1"></div>
+                <div class="sk-child sk-bounce2"></div>
+                <div class="sk-child sk-bounce3"></div>
             </div>
-            <ul class="footer-end">
-                <li><a href="##">About</a></li>
-                <li><a href="##">Support</a></li>
-                <li><a href="##">Puchase</a></li>
-            </ul>
         </div>
-    </footer>
-  </div>
-</div>
-<!-- Chart library -->
-<script src="{{asset('admin/plugins/chart.min.js')}}"></script>
-<!-- Icons library -->
-<script src="{{asset('admin/plugins/feather.min.js')}}"></script>
-<!-- Custom scripts -->
-<script src="{{asset('admin/js/script.js')}}"></script>
-</body>
+        <!--*******************
+            Preloader end
+        ********************-->
+
+
+        <!--**********************************
+            Main wrapper start
+        ***********************************-->
+        <div id="main-wrapper">
+
+            <!--**********************************
+                Nav header start
+            ***********************************-->
+            <div class="nav-header">
+                <a href="index.php" class="brand-logo">LOGO</a>
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                </div>
+            </div>
+            <!--**********************************
+                Nav header end
+            ***********************************-->
+
+            <!--**********************************
+                Header start
+            ***********************************-->
+            <div class="header">
+                <div class="header-content">
+                    <nav class="navbar navbar-expand">
+                        <div class="collapse navbar-collapse justify-content-between">
+                            <div class="header-left"></div>
+
+                            <ul class="navbar-nav header-right">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                        <span>En</span>
+                                        <i class="icon-arrow-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item">
+                                            <span class="ml-2">En</span>
+                                        </a>
+                                        <a href="#" class="dropdown-item">
+                                            <span class="ml-2">Vi</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown header-profile">
+                                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                        <i class="mdi mdi-account"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="./app-profile.html" class="dropdown-item">
+                                            <i class="icon-user"></i>
+                                            <span class="ml-2">Profile</span>
+                                        </a>
+                                        <a href="./page-login.html" class="dropdown-item">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!--**********************************
+                Header end ti-comment-alt
+            ***********************************-->
+
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+            <div class="quixnav">
+                <div class="quixnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li>
+                            <a class="" href="{{asset('admin/dashboard')}}" aria-expanded="true">
+                                <i class="icon icon-home"></i>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon icon-folder-15"></i>
+                                <span class="nav-text">Category manager</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="{{asset('admin/category')}}">List</a></li>
+                                <li><a href="{{asset('admin/category/add')}}">Add new</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon icon-coffee"></i>
+                                <span class="nav-text">Food manager</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="{{asset('admin/food')}}">List</a></li>
+                                <li><a href="{{asset('admin/food/add')}}">Add new</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/order')}}" aria-expanded="false">
+                                <i class="icon icon-payment"></i>
+                                <span class="nav-text">Order</span>
+                                <span class="msg-counter">{{$qty_order}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{asset('admin/user')}}" aria-expanded="false">
+                                <i class="icon icon-single-04"></i>
+                                <span class="nav-text">User</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{asset('/')}}" aria-expanded="false">
+                                <i class="icon icon-webpage"></i>
+                                <span class="nav-text">Sales Page</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--**********************************
+                Sidebar end
+            ***********************************-->
+
+            <!--**********************************
+                Content body start
+            ***********************************-->
+            <div class="content-body">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
+            <!--**********************************
+                Content body end
+            ***********************************-->
+
+            <!--**********************************
+                Footer start
+            ***********************************-->
+            <footer class="footer">
+                <div class="container footer--flex">
+                    <div class="footer-start">
+                        <p>2022 © Dashboard</p>
+                    </div>
+                    <ul class="footer-end">
+                        <li><a href="##">About</a></li>
+                        <li><a href="##">Support</a></li>
+                        <li><a href="##">Puchase</a></li>
+                    </ul>
+                </div>
+            </footer>
+            <!--**********************************
+                Footer end
+            ***********************************-->
+        </div>
+
+        <!--**********************************
+            Modal start
+        ***********************************-->
+        <div class="modal" tabindex="-1" style="background: rgba(0, 0, 0, 0.3);">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Warning</h5>
+                    <button type="button" class="close close-modal" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="min-width: 240px">
+                    <p>Are you sure to delete?</p>
+                </div>
+                <div class="modal-footer" style="">
+                    <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
+                    <a href="#" id="btn-delete-modal" class="btn btn-danger">Delete</a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Modal end
+        ***********************************-->
+
+        <!--**********************************
+            Scripts
+        ***********************************-->
+        <!-- Required vendors -->
+        <script src="{{asset('admin/vendor/global/global.min.js')}}"></script>
+        <script src="{{asset('admin/js/quixnav-init.js')}}"></script>
+        <script src="{{asset('admin/js/custom.min.js')}}"></script>
+
+        <!-- chart js -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+        <script src="{{asset('admin/vendor/chart/chart.js')}}"></script>
+
+        <!-- Dashboard -->
+        <script src="{{asset('admin/js/dashboard/dashboard.js')}}"></script>
+
+        <!-- Datatable -->
+        <script src="{{asset('admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('admin/js/plugins-init/datatables.init.js')}}"></script>
+
+        <!-- Form -->
+        <script src="{{asset('admin/vendor/jquery-steps/build/jquery.steps.min.js')}}"></script>
+
+        <!-- Toastr -->
+        <script src="./vendor/toastr/js/toastr.min.js"></script>
+        <script src="./js/plugins-init/toastr-init.js"></script>
+
+        <!-- Index -->
+        <script src="{{asset('admin/js/index.js')}}"></script>
+    </body>
 
 </html>

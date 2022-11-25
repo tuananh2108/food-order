@@ -16,7 +16,7 @@ class OrderController extends Controller
                             ->orderBy('orders.id', 'desc')
                             ->get();
         
-        return view('admin.order.indexOrder', $data);
+        return view('admin.order.index', $data);
     }
 
     public function getUpdateOrder($id)
@@ -28,31 +28,20 @@ class OrderController extends Controller
                             ->select('foods.title', 'foods.price', 'order_food.quantity')
                             ->where('order_food.order_id', $id)
                             ->get();
-        return view('admin.order.update_order', $data);
+        return view('admin.order.edit', $data);
     }
 
     public function postUpdateOrder(Request $request, $id) 
     {
         $order = order::find($id);
-        if($request->order_status == 1) {
-            $order->status = "Đã xác nhận";
-        }
-        elseif($request->order_status == 2) {
-            $order->status = "Đang giao hàng";
-        }
-        elseif($request->order_status == 3) {
-            $order->status = "Đã giao hàng";
-        }
-        else {
-            $order->status = "Đã hủy";
-        }
+        $order->status = $request->status;
         $order->save();
-        return redirect('admin/order')->with('success', 'Cập nhật thành công!');
+        return redirect('admin/order')->with('success', 'Update successful!');
     }
 
     public function getDeleteOrder($id)
     {
         order::destroy($id);
-        return back()->with('success', 'Xóa thành công!');
+        return back()->with('success', 'Delete successfully!');
     }
 }
