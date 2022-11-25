@@ -76,18 +76,13 @@ Route::group(['namespace'=>'admin'], function(){
             Route::get('delete/{id}', 'OrderController@getDeleteOrder');
         });
 
-        Route::group(['prefix'=>'customer'], function(){
-            Route::get('/', 'UserController@getCustomer');
-            Route::get('delete/{id}', 'UserController@getDeleteCustomer');
-        });
-
         Route::group(['prefix'=>'user'], function(){
             Route::get('/', 'UserController@getUser');
 
             Route::get('edit/{id}', 'UserController@getEditUser');
             Route::post('edit/{id}', 'UserController@postEditUser');
 
-            Route::get('delete/{id}', 'UserController@getDeleteCustomer');
+            Route::get('delete/{id}', 'UserController@getDeleteUser');
         });
     });
 });

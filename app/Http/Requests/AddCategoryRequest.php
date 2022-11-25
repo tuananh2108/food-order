@@ -24,14 +24,15 @@ class AddCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'unique:categories, title'
+            'title' => 'required|unique:categories'
         ];
     }
 
     public function messages()
     {
         return [
-            'title.unique' => 'Tên danh mục đã bị trùng!'
+            'title.required' => 'Category name cannot be empty.',
+            'title.unique' => 'Category name has been duplicated!'
         ];
     }
 }

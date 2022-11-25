@@ -10,24 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function getCustomer()
-    {
-        $data['qty_order'] = count(order::all());
-        $data['users'] = DB::table('users')
-                            ->join('roles', 'users.role_id', '=', 'roles.id')
-                            ->select('users.*')
-                            ->where('roles.uid', 'GUEST')
-                            ->get();
-        return view('admin.customer', $data);
-    }
-
-    public function getDeleteCustomer($id)
-    {
-        User::destroy($id);
-        return redirect()->back()->with('success', 'Xóa thành công!');
-    }
-
-    //user
     public function getUser()
     {
         $data['qty_order'] = count(order::all());
@@ -35,7 +17,7 @@ class UserController extends Controller
                             ->join('roles', 'users.role_id', '=', 'roles.id')
                             ->select('users.*', 'roles.uid')
                             ->get();
-        return view('admin.user.indexUser', $data);
+        return view('admin.user.index', $data);
     }
 
     public function getEditUser($id)
@@ -43,7 +25,7 @@ class UserController extends Controller
         $data['qty_order'] = count(order::all());
         $data['user'] = User::find($id);
         $data['roles'] = role::all();
-        return view('admin.user.editUser', $data);
+        return view('admin.user.edit', $data);
     }
 
     public function postEditUser(Request $request, $id)
@@ -51,6 +33,12 @@ class UserController extends Controller
         $user = User::find($id);
         $user->role_id = $request->role_id;
         $user->save();
-        return redirect('admin/user')->with('success', 'Cập nhật thành công!');
+        return redirect('admin/user')->with('success', 'Update successful!');
+    }
+
+    public function getDeleteUser($id)
+    {
+        User::destroy($id);
+        return back()->with('success', 'Delete successfully!');
     }
 }
